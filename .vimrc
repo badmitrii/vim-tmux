@@ -1,24 +1,28 @@
+:let mapleader = "\<Space>"
+
 syntax on
 set rnu
 set number
 set incsearch
 set expandtab
-nnoremap <C-f> <C-b>
 
-""""""""""""""""""
-""Bindings ""
-""""""""""""""""""
+""""""""""""
+""Bindings""
+""""""""""""
 
-nnoremap <C-b> <C-f>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-l> <C-w>l
-nnoremap <C-k> <C-w>k
-vnoremap <ESC>c "+y
-nnoremap <ESC>v "+p
-nnoremap <Space> i<Space><Right><ESC>
-nnoremap <CR> o<ESC>k
-nnoremap <Tab> i<Tab><ESC>
+nnoremap <Leader>f <C-b>
+nnoremap <Leader>b <C-f>
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>l <C-w>l
+nnoremap <Leader>k <C-w>k
+vnoremap <Leader>c "+y
+nnoremap <Leader>v "+p
+nnoremap <Leader>V "+P
+nnoremap <Leader>o :<C-U>call append(line("."), repeat([''], v:count1))<CR>
+nnoremap <Leader>O :<C-U>call append(line(".")-1, repeat([''], v:count1))<CR>
+"nnoremap <Space> i<Space><Right><ESC>
+
 
 """"""""""""""""""
 ""Vundle plugins""
@@ -37,4 +41,3 @@ filetype plugin indent on    " required
 """""""""""""""""""""
 au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-
