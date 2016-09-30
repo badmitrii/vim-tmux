@@ -21,8 +21,12 @@ nnoremap <Leader>v "+p
 nnoremap <Leader>V "+P
 nnoremap <Leader>o :<C-U>call append(line("."), repeat([''], v:count1))<CR>
 nnoremap <Leader>O :<C-U>call append(line(".")-1, repeat([''], v:count1))<CR>
-"nnoremap <Space> i<Space><Right><ESC>
 
+inoremap DD <ESC>dd
+inoremap CC <ESC>C
+inoremap SS <ESC>S
+inoremap UU <ESC>u
+"nnoremap <Space> i<Space><Right><ESC>
 
 """"""""""""""""""
 ""Vundle plugins""
