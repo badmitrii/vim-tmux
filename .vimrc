@@ -1,28 +1,35 @@
 :let mapleader = "\<Space>"
 
 syntax on
+
+command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
 set rnu
 set number
 set incsearch
 set expandtab
+set tabstop=4
+set shiftwidth=4
 
 """"""""""""
 ""Bindings""
 """"""""""""
 
 nnoremap <Leader>f <C-b>
+nnoremap <Leader>s r<ENTER>k$
 nnoremap <Leader>b <C-f>
 nnoremap <Leader>h <C-w>h
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>l <C-w>l
 nnoremap <Leader>k <C-w>k
-vnoremap <Leader>c "+y
 nnoremap <Leader>v "+p
 nnoremap <Leader>V "+P
 nnoremap <Leader>o :<C-U>call append(line("."), repeat([''], v:count1))<CR>
 nnoremap <Leader>O :<C-U>call append(line(".")-1, repeat([''], v:count1))<CR>
 
-inoremap DD <ESC>dd
+xnoremap p pgvy
+
+vnoremap <Leader>c "+y
+
 inoremap CC <ESC>C
 inoremap SS <ESC>S
 inoremap UU <ESC>u
@@ -37,6 +44,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'tpope/vim-surround'
+Plugin 'wincent/command-t'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
