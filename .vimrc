@@ -1,4 +1,19 @@
 :let mapleader = "\<Space>"
+""""""""""""""""""""""""""""""""""""""""""
+"""""""""Syntastic configuration""""""""""
+""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+""""""""""""""""""""""""""""""""""""""""""
+"""""""""Syntastic configuration""""""""""
+""""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :TagbarToggle<CR>
 
 syntax on
 
@@ -30,9 +45,6 @@ xnoremap p pgvy
 
 vnoremap <Leader>c "+y
 
-inoremap CC <ESC>C
-inoremap SS <ESC>S
-inoremap UU <ESC>u
 "nnoremap <Space> i<Space><Right><ESC>
 
 """"""""""""""""""
@@ -43,8 +55,13 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'majutsushi/tagbar'
+Plugin 'funcodeio/lz4.vim'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'wincent/command-t'
+Plugin 'sentientmachine/Pretty-Vim-Python'
+Plugin 'vim-syntastic/syntastic'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
