@@ -55,12 +55,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'majutsushi/tagbar'
-Plugin 'funcodeio/lz4.vim'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'wincent/command-t'
-Plugin 'sentientmachine/Pretty-Vim-Python'
 Plugin 'vim-syntastic/syntastic'
 call vundle#end()            " required
 filetype plugin indent on    " required
