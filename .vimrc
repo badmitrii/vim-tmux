@@ -26,6 +26,19 @@ let g:jedi#goto_assignments_command = "<F3>"
 """"""""""""""""jedi-vim""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""
 
+""""""toggle paste ident when paste"""""""
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+    set pastetoggle=<Esc>[201~
+    set paste
+    return ""
+endfunction
+""""""toggle paste ident when paste"""""""
+
 nmap <F8> :TagbarToggle<CR>
 
 syntax on
