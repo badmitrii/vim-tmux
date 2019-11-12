@@ -84,11 +84,12 @@ call vundle#begin()
 Plugin 'tpope/vim-surround'
 Plugin 'wincent/command-t'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'majutsushi/tagbar'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 """""""""""""""""""""
 ""Specific bindings""
 """""""""""""""""""""
-au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+"au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+"au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
