@@ -32,8 +32,6 @@ function! XTermPasteBegin()
 endfunction
 """"""toggle paste ident when paste"""""""
 
-nmap <F8> :TagbarToggle<CR>
-
 syntax on
 
 command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
@@ -47,13 +45,14 @@ set shiftwidth=4
 """"""""""""
 ""Bindings""
 """"""""""""
+nmap <F8> :TagbarToggle<CR>
 
-execute "nnoremap ".g:toggle_term ." :call ToggleTerminal()<CR>"
-execute "tnoremap ".g:toggle_term ." <C-w>N:call ToggleTerminal()<CR>"
 nnoremap <Leader>v "+p
 nnoremap <Leader>V "+P
 vnoremap <Leader>c "+y
 
+execute "nnoremap ".g:toggle_term ." :call ToggleTerminal()<CR>"
+execute "tnoremap ".g:toggle_term ." <C-w>N:call ToggleTerminal()<CR>"
 """"""""""""""""""
 ""Vundle plugins""
 """"""""""""""""""
