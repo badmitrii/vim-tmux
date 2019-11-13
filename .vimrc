@@ -7,14 +7,14 @@ let g:jedi#goto_assignments_command = "<F3>"
 
 """"""""""""""""toggle-terminal""""""""""""""""""
 let g:toggle_term = "<C-j>"
-let g:term_buf_nr = -1
+let s:term_buf_nr = -1
 function! ToggleTerminal()
-    if g:term_buf_nr == -1
+    if s:term_buf_nr == -1
         execute "bot term"
-        let g:term_buf_nr = bufnr("$")
+        let s:term_buf_nr = bufnr("$")
     else
-        execute "bd! " .g:term_buf_nr
-        let g:term_buf_nr = -1
+        execute "bd! " .s:term_buf_nr
+        let s:term_buf_nr = -1
     endif
 endfunction
 """"""""""""""""toggle-terminal""""""""""""""""""
