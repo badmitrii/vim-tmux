@@ -1,14 +1,23 @@
 :let mapleader = "\<Space>"
 
-""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""jedi-vim""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""
-
 let g:jedi#goto_assignments_command = "<F3>"
-
-""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""jedi-vim""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""toggle-terminal""""""""""""""""""
+let g:toggle_term = "<C-j>"
+let g:term_buf_nr = -1
+function! ToggleTerminal()
+    if g:term_buf_nr == -1
+        execute "bot term"
+        let g:term_buf_nr = bufnr("$")
+    else
+        execute "bd! " .g:term_buf_nr
+        let g:term_buf_nr = -1
+    endif
+endfunction
+""""""""""""""""toggle-terminal""""""""""""""""""
 
 """"""toggle paste ident when paste"""""""
 let &t_SI .= "\<Esc>[?2004h"
@@ -39,20 +48,10 @@ set shiftwidth=4
 ""Bindings""
 """"""""""""
 
-nnoremap <Leader>f <C-b>
-nnoremap <Leader>s r<ENTER>k$
-nnoremap <Leader>b <C-f>
-nnoremap <Leader>h <C-w>h
-nnoremap <Leader>j <C-w>j
-nnoremap <Leader>l <C-w>l
-nnoremap <Leader>k <C-w>k
+execute "nnoremap ".g:toggle_term ." :call ToggleTerminal()<CR>"
+execute "tnoremap ".g:toggle_term ." <C-w>N:call ToggleTerminal()<CR>"
 nnoremap <Leader>v "+p
 nnoremap <Leader>V "+P
-nnoremap <Leader>o :<C-U>call append(line("."), repeat([''], v:count1))<CR>
-nnoremap <Leader>O :<C-U>call append(line(".")-1, repeat([''], v:count1))<CR>
-
-xnoremap p pgvy
-
 vnoremap <Leader>c "+y
 
 "nnoremap <Space> i<Space><Right><ESC>
