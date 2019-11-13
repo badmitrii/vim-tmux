@@ -4,10 +4,6 @@
 let g:jedi#goto_assignments_command = "<F3>"
 """"""""""""""""jedi-vim""""""""""""""""""
 
-""""""""""""""""nerdtree""""""""""""""""""
-let s:toggle_nerd_tree = "<C-b>"
-""""""""""""""""nerdtree""""""""""""""""""
-
 """"""""""""""""toggle-terminal""""""""""""""""""
 let g:toggle_term = "<C-j>"
 let g:term_rows = 15
@@ -23,6 +19,30 @@ function! ToggleTerminal()
     endif
 endfunction
 """"""""""""""""toggle-terminal""""""""""""""""""
+
+""""""""""""""""nerdtree""""""""""""""""""
+let s:toggle_nerd_tree = "<C-b>"
+
+"A helper function to accept a node argument
+function! NERDTreeToggleTerminalHelper(node)
+    call ToggleTerminal()
+endfunction
+
+"NERDTree is not loaded yet so postopone remapping
+"See: https://github.com/scrooloose/nerdtree/issues/874
+au VimEnter * call NERDTreeAddKeyMap({
+       \ 'key': "" . g:toggle_term,
+       \ 'callback': 'ToggleTerminal',
+       \ 'override': 1,
+       \ 'quickhelpText': 'toggle terminal buffer'})
+
+au VimEnter * call NERDTreeAddKeyMap({
+       \ 'key': "" . g:toggle_term,
+       \ 'callback': 'NERDTreeToggleTerminalHelper',
+       \ 'override': 1,
+       \ 'quickhelpText': 'toggle terminal buffer',
+       \ 'scope': 'Node'})
+""""""""""""""""nerdtree""""""""""""""""""
 
 """"""toggle paste ident when paste"""""""
 let &t_SI .= "\<Esc>[?2004h"
