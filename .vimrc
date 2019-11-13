@@ -24,6 +24,24 @@ function! ToggleTerminal()
 endfunction
 """"""""""""""""toggle-terminal""""""""""""""""""
 
+""""""""""""""""project build""""""""""""""""""
+function! Prj_dir_open()
+    echo "Opened!"
+endfunction
+
+function! Prj_build()
+    echo "Project was built!"
+endfunction
+
+function! Prj_run_all_tests()
+    echo "All tests passed!"
+endfunction
+
+command! PrjOpen call Prj_dir_open()
+command! PrjBuild call Prj_build()
+command! PrjRunTests call Prj_run_all_tests()
+""""""""""""""""project build""""""""""""""""""
+
 """"""""""""""""nerdtree""""""""""""""""""
 let s:toggle_nerd_tree = "<C-b>"
 
