@@ -4,10 +4,13 @@
 let g:jedi#goto_assignments_command = "<F3>"
 """"""""""""""""jedi-vim""""""""""""""""""
 
+""""""""""""""""nerdtree""""""""""""""""""
+""""""""""""""""nerdtree""""""""""""""""""
 
 """"""""""""""""toggle-terminal""""""""""""""""""
 let g:toggle_term = "<C-j>"
 let g:term_rows = 15
+
 let s:term_buf_nr = -1
 function! ToggleTerminal()
     if s:term_buf_nr == -1
@@ -35,7 +38,7 @@ endfunction
 
 syntax on
 
-command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
+"command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
 set rnu
 set number
 set incsearch
@@ -48,12 +51,14 @@ set shiftwidth=4
 """"""""""""
 nmap <F8> :TagbarToggle<CR>
 
+map <C-b> :NERDTreeToggle<CR>
+
 nnoremap <Leader>v "+p
 nnoremap <Leader>V "+P
 vnoremap <Leader>c "+y
 
 execute "nnoremap ".g:toggle_term ." :call ToggleTerminal()<CR>"
-execute "tnoremap ".g:toggle_term ." <C-w>N:call ToggleTerminal()<CR>"
+execute "tnoremap ".g:toggle_term ." <C-w>:call ToggleTerminal()<CR>"
 """"""""""""""""""
 ""Vundle plugins""
 """"""""""""""""""
@@ -63,6 +68,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/command-t'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'majutsushi/tagbar'
