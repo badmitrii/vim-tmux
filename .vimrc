@@ -54,8 +54,6 @@ nnoremap <Leader>v "+p
 nnoremap <Leader>V "+P
 vnoremap <Leader>c "+y
 
-"nnoremap <Space> i<Space><Right><ESC>
-
 """"""""""""""""""
 ""Vundle plugins""
 """"""""""""""""""
