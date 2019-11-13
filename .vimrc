@@ -4,6 +4,10 @@
 let g:jedi#goto_assignments_command = "<F3>"
 """"""""""""""""jedi-vim""""""""""""""""""
 
+""""""""""""""""toggle-tagbar""""""""""""""""""
+let s:toggle_tagbar = "<F8>"
+""""""""""""""""toggle-tagbar""""""""""""""""""
+
 """"""""""""""""toggle-terminal""""""""""""""""""
 let g:toggle_term = "<C-j>"
 let g:term_rows = 15
@@ -70,9 +74,11 @@ set shiftwidth=4
 """"""""""""
 ""Bindings""
 """"""""""""
-nmap <F8> :TagbarToggle<CR>
+execute "nmap " . s:toggle_tagbar " :TagbarToggle<CR>"
+execute "tnoremap " . s:toggle_tagbar " <C-w>:TagbarToggle<CR>"
 
 execute "map ". s:toggle_nerd_tree ." :NERDTreeToggle<CR>"
+execute "tnoremap ".s:toggle_nerd_tree ." <C-w>:NERDTreeToggle<CR>"
 
 nnoremap <Leader>v "+p
 nnoremap <Leader>V "+P
@@ -80,7 +86,6 @@ vnoremap <Leader>c "+y
 
 execute "nnoremap ".g:toggle_term ." :call ToggleTerminal()<CR>"
 execute "tnoremap ".g:toggle_term ." <C-w>:call ToggleTerminal()<CR>"
-execute "tnoremap ".s:toggle_nerd_tree ." <C-w>:NERDTreeToggle<CR>"
 """"""""""""""""""
 ""Vundle plugins""
 """"""""""""""""""
