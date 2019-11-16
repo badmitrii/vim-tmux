@@ -9,14 +9,30 @@ let s:toggle_tagbar = "<F8>"
 """"""""""""""""toggle-tagbar""""""""""""""""""
 
 """"""""""""""""toggle-terminal""""""""""""""""""
+let g:show_term = "&"
 let g:toggle_term = "<C-j>"
 let g:term_rows = 15
 
 let s:term_buf_nr = -1
+function! CreateTerminalInstance(rows)
+    execute "bot term ++rows=" . a:rows
+    return bufnr("$")
+endfunction
+
+function! ShowTerminal()
+    if s:term_buf_nr == -1
+        let s:term_buf_nr = CreateTerminalInstance(g:term_rows)
+    else 
+        let l:term_winnr = get(win_findbuf(s:term_buf_nr), 0)
+        echo l:term_winnr
+        call win_gotoid(l:term_winnr)
+    endif
+endfunction
+
 function! ToggleTerminal()
     if s:term_buf_nr == -1
-        execute "bot term ++rows=" . g:term_rows
-        let s:term_buf_nr = bufnr("$")
+        let s:term_buf_nr = CreateTerminalInstance(g:term_rows)
+        echo s:term_buf_nr
     else
         execute "bd! " .s:term_buf_nr
         let s:term_buf_nr = -1
@@ -104,6 +120,8 @@ vnoremap <Leader>c "+y
 
 execute "nnoremap ".g:toggle_term ." :call ToggleTerminal()<CR>"
 execute "tnoremap ".g:toggle_term ." <C-w>:call ToggleTerminal()<CR>"
+
+execute "nnoremap". g:show_term ." :call ShowTerminal()<CR>"
 """"""""""""""""""
 ""Vundle plugins""
 """"""""""""""""""
