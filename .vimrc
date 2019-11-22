@@ -1,7 +1,7 @@
 "TODO: 
 "1. Make terminal window being hidden instead of closing and re-opening from scratch
-"2. Make toggl terminal work even in edit mode
-"3. Creating new file and other navigation-related things are not implemented now 
+"2. Make toggle terminal work even in edit mode
+"3. Creating new file and other navigation-related staff are not implemented now 
 :let mapleader = "\<Space>"
 
 """"""""""""""""jedi-vim""""""""""""""""""
