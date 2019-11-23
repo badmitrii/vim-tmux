@@ -1,4 +1,4 @@
-"TODO: 
+
 "1. Make terminal window being hidden instead of closing and re-opening from scratch
 "2. Make toggle terminal work even in edit mode
 "3. Creating new file and other navigation-related staff are not implemented now 
@@ -19,8 +19,17 @@ let g:term_rows = 15
 
 let s:term_buf_nr = -1
 function! CreateTerminalInstance()
-    execute "terminal ++hidden"
+    execute "terminal ++hidden" 
     return bufnr("$")
+endfunction
+
+function! KillTerminal()
+    if s:term_buf_nr != -1
+        let l:term_job = term_getjob(s:term_buf_nr)
+        call job_stop(l:term_job, "kill")
+        execute "bd! " . s:term_buf_nr
+        let s:term_buf_nr = -1
+    endif
 endfunction
 
 function! ShowTerminal()
@@ -32,7 +41,7 @@ function! ShowTerminal()
         execute "bot " . g:term_rows . "split"
         execute "b " . s:term_buf_nr
     else
-        let l:term_winnr = get(win_findbuf(l:term_winnrs), 0)
+        let l:term_winnr = get(term_winnrs, 0)
         call win_gotoid(l:term_winnr)
     endif
 endfunction
