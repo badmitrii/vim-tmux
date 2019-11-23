@@ -18,28 +18,37 @@ let g:toggle_term = "<C-j>"
 let g:term_rows = 15
 
 let s:term_buf_nr = -1
-function! CreateTerminalInstance(rows)
-    execute "bot term ++rows=" . a:rows
+function! CreateTerminalInstance()
+    execute "terminal ++hidden"
     return bufnr("$")
 endfunction
 
 function! ShowTerminal()
     if s:term_buf_nr == -1
-        let s:term_buf_nr = CreateTerminalInstance(g:term_rows)
-    else 
-        let l:term_winnr = get(win_findbuf(s:term_buf_nr), 0)
-        echo l:term_winnr
+        let s:term_buf_nr = CreateTerminalInstance()
+    endif
+    let l:term_winnrs = win_findbuf(s:term_buf_nr)
+    if(len(l:term_winnrs) == 0)
+        execute "bot " . g:term_rows . "split"
+        execute "b " . s:term_buf_nr
+    else
+        let l:term_winnr = get(win_findbuf(l:term_winnrs), 0)
         call win_gotoid(l:term_winnr)
     endif
 endfunction
 
 function! ToggleTerminal()
     if s:term_buf_nr == -1
-        let s:term_buf_nr = CreateTerminalInstance(g:term_rows)
-        echo s:term_buf_nr
+        let s:term_buf_nr = CreateTerminalInstance()
+    endif
+    let l:terminal_winnrs = win_findbuf(s:term_buf_nr)
+    if(len(l:terminal_winnrs) != 0)
+        for winnr in l:terminal_winnrs
+            execute "close! " . winnr
+        endfor
     else
-        execute "bd! " .s:term_buf_nr
-        let s:term_buf_nr = -1
+        execute "bot " . g:term_rows . "split"
+        execute "b " . s:term_buf_nr
     endif
 endfunction
 """"""""""""""""toggle-terminal""""""""""""""""""
