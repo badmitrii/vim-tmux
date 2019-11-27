@@ -17,6 +17,9 @@ let g:show_term = "&"
 let g:toggle_term = "<C-j>"
 let g:term_rows = 15
 
+set swapfile
+set dir=~/.swap-files
+
 let s:term_buf_nr = -1
 function! CreateTerminalInstance()
     execute "terminal ++hidden" 
@@ -119,7 +122,6 @@ endfunction
 
 syntax on
 
-"command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
 set rnu
 set number
 set incsearch
@@ -142,8 +144,10 @@ vnoremap <Leader>c "+y
 
 execute "nnoremap ".g:toggle_term ." :call ToggleTerminal()<CR>"
 execute "tnoremap ".g:toggle_term ." <C-w>:call ToggleTerminal()<CR>"
+execute "inoremap ".g:toggle_term ." <C-o>:call ToggleTerminal()<CR>"
 
 execute "nnoremap". g:show_term ." :call ShowTerminal()<CR>"
+execute "inoremap". g:show_term ." <ESC> :call ShowTerminal()<CR>"
 """"""""""""""""""
 ""Vundle plugins""
 """"""""""""""""""
@@ -159,9 +163,3 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'majutsushi/tagbar'
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-"""""""""""""""""""""
-""Specific bindings""
-"""""""""""""""""""""
-"au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-"au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
