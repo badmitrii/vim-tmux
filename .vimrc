@@ -1,6 +1,7 @@
 
-"1. Make terminal window being hidden instead of closing and re-opening from scratch
-"2. Make toggle terminal work even in edit mode
+"1. Cannot close vim in case a terminal is activated.
+"2. In insert mode, toggling terminal make it focused and therefore exiting the insert mode. This is unnatural behavior
+"3. Toggling terminal shoul not change focus and mode (e.g. it should not quit insert mode) 
 "3. Creating new file and other navigation-related staff are not implemented now 
 :let mapleader = "\<Space>"
 
