@@ -1,4 +1,3 @@
-
 "1. Cannot close vim in case a terminal is activated.
 "2. In insert mode, toggling terminal make it focused and therefore exiting the insert mode. This is unnatural behavior
 "3. Toggling terminal shoul not change focus and mode (e.g. it should not quit insert mode) 
@@ -123,6 +122,7 @@ endfunction
 
 syntax on
 
+set mouse=a
 set rnu
 set number
 set incsearch
