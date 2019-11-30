@@ -5,6 +5,7 @@
 :let mapleader = "\<Space>"
 
 """"""""""""""""jedi-vim""""""""""""""""""
+autocmd FileType python setlocal completeopt-=preview
 let g:jedi#goto_assignments_command = "<F3>"
 """"""""""""""""jedi-vim""""""""""""""""""
 
@@ -148,7 +149,6 @@ execute "tnoremap ".g:toggle_term ." <C-w>:call ToggleTerminal()<CR>"
 execute "inoremap ".g:toggle_term ." <C-o>:call ToggleTerminal()<CR>"
 
 execute "nnoremap". g:show_term ." :call ShowTerminal()<CR>"
-execute "inoremap". g:show_term ." <ESC> :call ShowTerminal()<CR>"
 """"""""""""""""""
 ""Vundle plugins""
 """"""""""""""""""
