@@ -24,6 +24,8 @@ set dir=~/.swap-files
 let s:term_buf_nr = -1
 function! CreateTerminalInstance()
     execute "terminal ++hidden" 
+    let l:term_buf_nr = bufnr("$")
+    call setbufvar(l:term_buf_nr, "&buflisted", 0)
     return bufnr("$")
 endfunction
 
