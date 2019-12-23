@@ -151,6 +151,14 @@ execute "tnoremap ".g:toggle_term ." <C-w>:call ToggleTerminal()<CR>"
 execute "inoremap ".g:toggle_term ." <C-o>:call ToggleTerminal()<CR>"
 
 execute "nnoremap". g:show_term ." :call ShowTerminal()<CR>"
+
+" Auto closing
+inoremap ( ()<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
+inoremap { {}<Esc>i
+inoremap [ []<Esc>i
+
 """"""""""""""""""
 ""Vundle plugins""
 """"""""""""""""""
